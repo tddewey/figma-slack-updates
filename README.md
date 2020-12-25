@@ -24,7 +24,7 @@ Automatically post updates to a Slack channel each day with the updates from a F
 #### Deploying the Heroku app
 1. Click the Deploy to Heroku button
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jordansinger/figma-slack-updates)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sonhoang0611/figma-slack-updates)
 
 2. Give your Heroku app a name
 3. For the **Config Vars** section, proceed to the [Figma](#figma) and [Slack](#slack) sections of the README in order to obtain your `FIGMA_FILE_KEY`, `FIGMA_PERSONAL_ACCESS_TOKEN`, `SLACK_CHANNEL_ID`, `SLACK_TEAM_ID`, `SLACK_USER_ID`
