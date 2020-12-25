@@ -13,6 +13,7 @@ def get_updates():
 
   r = requests.get(url = FIGMA_API_URL, headers = FIGMA_API_HEADERS)
   data = r.json()
+  print(data)
   versions = data["versions"]
 
   filter_function = lambda x: maya.parse(x['created_at']).datetime().date() == datetime.date.today() and x['description'] is not None and len(x['description']) > 0
@@ -23,7 +24,7 @@ def get_updates():
 
 def format_message(todays_versions):
   date = datetime.datetime.today()
-  message = str(date.month) + "/" + str(date.day) + "\n"
+  message = str(date.day) + "/" + str(date.month) + "\n" + "/" str(date.year) + "\n"
 
   for version in todays_versions:
     description = version["description"]
