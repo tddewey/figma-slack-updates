@@ -24,7 +24,8 @@ def get_updates():
 
 def format_message(todays_versions):
   date = datetime.datetime.today()
-  message = str(date.day) + "/" + str(date.month) + "\n" + "/" + str(date.year) + "\n"
+  message = "Design library updates: \n\n"
+  # message = "str(date.year) + "/" + str(date.month) + "/" + str(date.year) + "\n"
 
   for version in todays_versions:
     description = version["description"]
