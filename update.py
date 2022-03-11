@@ -48,7 +48,7 @@ def format_message(todays_versions):
 def unix_time_from_iso8601(t):
     parsed_t = dp.parse(t)
     t_in_seconds = parsed_t.strftime('%s')
-    return float(t_in_seconds)
+    return int(t_in_seconds)
 
 def post_message(message):
   SLACK_TEAM_ID = environ.get('SLACK_TEAM_ID')
