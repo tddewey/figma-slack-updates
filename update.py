@@ -16,7 +16,8 @@ def get_updates():
   print(data)
   versions = data["versions"]
 
-  filter_function = lambda x: maya.parse(x['created_at']).datetime().date() == datetime.date.today() and x['description'] is not None and len(x['description']) > 0
+  # Filter out versions that were created more than 24 hours ago, or where the description is empty
+  filter_function = lambda x: maya.parse(datetime.utcnow() - x['created_at']).datetime().datetime() < timedelta(hours=24) and x['description'] is not None and len(x['description']) > 0
   todays_versions = list(filter(filter_function, versions))
   if len(todays_versions) > 0:
     message = format_message(todays_versions)
