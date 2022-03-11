@@ -17,12 +17,12 @@ def get_updates():
   print(data)
   versions = data["versions"]
 
-    now = time.time()
-    hours_in_seconds = 1 * 60 * 60
+  now = time.time()
+  hours_in_seconds = 1 * 60 * 60
 
-    # Filter out versions that were created more than 24 hours ago, or where the description is empty
-    filter_function = lambda x: now - unix_time_from_iso8601(x['created_at']) < hours_in_seconds*24 and x['description'] is not None and len(x['description']) > 0
-    todays_versions = list(filter(filter_function, versions))
+  # Filter out versions that were created more than 24 hours ago, or where the description is empty
+  filter_function = lambda x: now - unix_time_from_iso8601(x['created_at']) < hours_in_seconds*24 and x['description'] is not None and len(x['description']) > 0
+  todays_versions = list(filter(filter_function, versions))
     
   if len(todays_versions) > 0:
     message = format_message(todays_versions)
