@@ -1,5 +1,5 @@
 import requests
-import maya
+import time
 import datetime
 import dateutil.parser as dp
 from os import environ
