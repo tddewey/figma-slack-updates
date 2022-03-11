@@ -1,6 +1,7 @@
 import requests
 import maya
 import datetime
+import dateutil.parser as dp
 from os import environ
 from dotenv import load_dotenv
 load_dotenv()
@@ -29,10 +30,22 @@ def format_message(todays_versions):
   # message = "str(date.year) + "/" + str(date.month) + "/" + str(date.year) + "\n"
 
   for version in todays_versions:
+    created_at = version["created_at"]
+    label = version["label"]
     description = version["description"]
-    message += "\n" + description
+    user = version["user"]["handle"]
+
+    message += "*" + label + "*\n"
+    message += "_<!date^" + unix_time_from_iso8601(created_at) + "^{time} {date_short_pretty}|" + created_at + "> by " + user + "_\n"
+    message += description + "\n"
+    message += "\n-----------\n\n"
 
   return message
+
+def unix_time_from_iso8601(t):
+    parsed_t = dp.parse(t)
+    t_in_seconds = parsed_t.strftime('%s')
+    return t_in_seconds
 
 def post_message(message):
   SLACK_TEAM_ID = environ.get('SLACK_TEAM_ID')
